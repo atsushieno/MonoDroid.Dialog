@@ -18,11 +18,14 @@ namespace MonoDroid.Dialog
         public string Value
         {
             get { return _value; }
-            set { _value = value; if (_text != null) _text.Text = _value; }
+            set { _value = value; if (_text != null) { _text.Text = _value; } }
         }
         private string _value;
 
         public object Alignment;
+		
+		public int Lines { get; set; }
+		public bool Multiline { get; set; }
 
         public StringElement(string caption)
             : base(caption, (int)DroidResources.ElementLayout.dialog_labelfieldright)
@@ -68,8 +71,13 @@ namespace MonoDroid.Dialog
             {
                 _caption.Text = Caption;
 				_caption.TextSize = FontSize;
+				
+				_text.SetSingleLine(!Multiline);
+				if (Multiline)
+					_text.SetLines(Lines);
                 _text.Text = Value;
 				_text.TextSize = FontSize;
+				
 				if (Click != null)
 					view.Click += delegate { this.Click(); };
             }

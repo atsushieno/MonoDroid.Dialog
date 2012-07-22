@@ -13,6 +13,12 @@ namespace MonoDroid.Dialog
 		{
 			this.Click = tapped;
 		}
+		
+		public ButtonElement (string caption, Action tapped, int layoutId)
+            : base(caption, layoutId)
+		{
+			this.Click = tapped;
+		}
 
 		public override View GetView (Context context, View convertView, ViewGroup parent)
 		{

@@ -120,6 +120,11 @@ namespace MonoDroid.Dialog
 			set { footer = value; }
 		}
 
+		/// <summary>
+		/// The section's font size.
+		/// </summary>
+		public int FontSize {get;set;}
+		
 		public int Count
 		{
 			get { return Elements.Count; }
@@ -319,8 +324,8 @@ namespace MonoDroid.Dialog
 				e.Dispose();
 			Elements = new List<Element>();
 
-			var root = Parent as RootElement;
-			//if (root != null && root.TableView != null)
+			// var root = Parent as RootElement;
+			// if (root != null && root.TableView != null)
 			//    root.TableView.ReloadData();
 		}
 
@@ -358,6 +363,7 @@ namespace MonoDroid.Dialog
 				?? new TextView(context, null, Android.Resource.Attribute.ListSeparatorTextViewStyle);
 
 			view.Text = this.Caption;
+			view.TextSize = FontSize;
 
 			return view;
 		}

@@ -39,6 +39,8 @@ namespace MonoDroid.Dialog
 			dialog_linkword_multiline_centered_label,
 			dialog_linkword_multiline_left_justified_label,
 			dialog_linkword_three_horizontal_labels,
+			dialog_linkword_button,
+			dialog_linkword_root,
         }
 
         public static View LoadFloatElementLayout(Context context, View convertView, ViewGroup parent, int layoutId, out TextView label, out SeekBar slider, out ImageView left, out ImageView right)
@@ -293,6 +295,8 @@ namespace MonoDroid.Dialog
 				{ ElementLayout.dialog_linkword_multiline_centered_label, "dialog_linkword_multiline_centered_label"},
 				{ ElementLayout.dialog_linkword_multiline_left_justified_label, "dialog_linkword_multiline_left_justified_label"},
 				{ ElementLayout.dialog_linkword_three_horizontal_labels, "dialog_linkword_three_horizontal_labels"},
+				{ ElementLayout.dialog_linkword_button, "dialog_linkword_button"},
+				{ ElementLayout.dialog_linkword_root, "dialog_linkword_root"},
             };
         }
     }

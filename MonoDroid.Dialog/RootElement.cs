@@ -27,8 +27,13 @@ namespace MonoDroid.Dialog
         public RootElement(string caption)
             : base(caption, (int) DroidResources.ElementLayout.dialog_root)
         {
-            _summarySection = -1;
-            Sections = new List<Section>();
+            InitSection ();
+        }
+
+		public RootElement(string caption, DroidResources.ElementLayout layoutid)
+            : base(caption, (int) layoutid)
+        {
+            InitSection();
         }
 
         /// <summary>
@@ -42,9 +47,8 @@ namespace MonoDroid.Dialog
         public RootElement(string caption, Func<RootElement, View> createOnSelected)
             : base(caption, (int)DroidResources.ElementLayout.dialog_root)
         {
-            _summarySection = -1;
+			InitSection();
             this._createOnSelected = createOnSelected;
-            Sections = new List<Section>();
         }
 
         /// <summary>
@@ -81,6 +85,13 @@ namespace MonoDroid.Dialog
         {
             this._group = group;
         }
+
+
+		void InitSection ()
+		{
+			_summarySection = -1;
+			Sections = new List<Section> ();
+		}
 
         /// <summary>
         /// Single save point for a context, elements can get this context via GetContext() for navigation operations
