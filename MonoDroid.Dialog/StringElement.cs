@@ -48,7 +48,7 @@ namespace MonoDroid.Dialog
             : base(caption, (int)DroidResources.ElementLayout.dialog_labelfieldright)
         {
             Value = value;
-			this.Click = clicked;
+			this.Tapped = clicked;
         }
 
         public StringElement(string caption, string value, int layoutId)
@@ -61,7 +61,7 @@ namespace MonoDroid.Dialog
             : base(caption, (int)DroidResources.ElementLayout.dialog_labelfieldright)
         {
             Value = null;
-			this.Click = clicked;
+			this.Tapped = clicked;
         }
 
         public override View GetView(Context context, View convertView, ViewGroup parent)
@@ -70,16 +70,18 @@ namespace MonoDroid.Dialog
             if (view != null)
             {
                 _caption.Text = Caption;
-				_caption.TextSize = FontSize;
+				if (FontSize != 0)
+				  _caption.TextSize = FontSize;
 				
 				_text.SetSingleLine(!Multiline);
 				if (Multiline)
 					_text.SetLines(Lines);
                 _text.Text = Value;
-				_text.TextSize = FontSize;
+				if (FontSize != 0)
+				  _text.TextSize = FontSize;
 				
-				if (Click != null)
-					view.Click += delegate { this.Click(); };
+				if (Tapped != null)
+					view.Click += delegate { this.Tapped(); };
             }
             return view;
         }
@@ -88,8 +90,8 @@ namespace MonoDroid.Dialog
 		{
 			base.Selected ();
 			
-			if(this.Click != null) {
-				Click();
+			if(this.Tapped != null) {
+				Tapped();
 			}
 		}
 

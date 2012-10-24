@@ -341,15 +341,21 @@ namespace MonoDroid.Dialog
 
 		public int GetElementViewType(Element e)
 		{
-			var elementType = e.GetType().FullName;
+			try {
+				var elementType = e.GetType().FullName;
 
-			for (int i = 0; i < ElementTypes.Count; i++)
-			{
-				if (ElementTypes[i].Equals(elementType))
-					return i + 1;
+				for (int i = 0; i < ElementTypes.Count; i++)
+				{
+					if (ElementTypes[i].Equals(elementType))
+						return i + 1;
+				}
+
+				return 0;
+			} 
+			catch (System.Exception ex) {
+				Console.WriteLine ( "Breaking : " + ex.Message );
+				return 0;
 			}
-
-			return 0;
 		}
 
 		public int ElementViewTypeCount
@@ -363,7 +369,8 @@ namespace MonoDroid.Dialog
 				?? new TextView(context, null, Android.Resource.Attribute.ListSeparatorTextViewStyle);
 
 			view.Text = this.Caption;
-			view.TextSize = FontSize;
+			if (FontSize != 0)
+			  view.TextSize = FontSize;
 
 			return view;
 		}

@@ -39,7 +39,7 @@ namespace MonoDroid.Dialog
 			View view = base.GetView (context, convertView, parent);
 			
 //            this.Click = (o, e) => OpenUrl(context);
-			this.Click = delegate { OpenUrl(context); };
+			this.Tapped = delegate { OpenUrl(context); };
 
 			return view;
 		}

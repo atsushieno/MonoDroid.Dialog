@@ -11,13 +11,13 @@ namespace MonoDroid.Dialog
 		public ButtonElement (string caption, Action tapped)
             : base(caption, (int)DroidResources.ElementLayout.dialog_button)
 		{
-			this.Click = tapped;
+			this.Tapped = tapped;
 		}
 		
 		public ButtonElement (string caption, Action tapped, int layoutId)
             : base(caption, layoutId)
 		{
-			this.Click = tapped;
+			this.Tapped = tapped;
 		}
 
 		public override View GetView (Context context, View convertView, ViewGroup parent)
@@ -26,8 +26,8 @@ namespace MonoDroid.Dialog
 			var view = DroidResources.LoadButtonLayout (context, convertView, parent, LayoutId, out button);
 			if (view != null) {
 				button.Text = Caption;
-				if (Click != null)
-					button.Click += delegate { Click(); };
+				if (Tapped != null)
+					button.Click += delegate { Tapped(); };
 			}
 			
 			return view;

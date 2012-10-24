@@ -41,6 +41,8 @@ namespace MonoDroid.Dialog
 			dialog_linkword_three_horizontal_labels,
 			dialog_linkword_button,
 			dialog_linkword_root,
+			dialog_linkword_horizontal_label_button,
+			dialog_linkword_textview_centered,
         }
 
         public static View LoadFloatElementLayout(Context context, View convertView, ViewGroup parent, int layoutId, out TextView label, out SeekBar slider, out ImageView left, out ImageView right)
@@ -244,6 +246,36 @@ namespace MonoDroid.Dialog
             }
             return layout;
         }
+
+		public static View LoadLabelButtonLayout (Context context, View convertView, ViewGroup parent, int layoutId, out TextView textView, out Button button)
+		{
+			View layout = LoadLayout(context, parent, layoutId);
+            if (layout != null)
+            {
+				textView = layout.FindViewById<TextView>(context.Resources.GetIdentifier("dialog_LabelField", "id", context.PackageName));
+				button = layout.FindViewById<Button>(context.Resources.GetIdentifier("dialog_ValueField", "id", context.PackageName));
+            }
+            else
+            {
+				textView = null;
+				button = null;
+            }
+            return layout;
+		}
+
+		public static View LoadLinkwordEntryElementLayout (Context context, View convertView, ViewGroup parent, int layoutId, out EditText editText)
+		{
+			View layout = LoadLayout(context, parent, layoutId);
+            if (layout != null)
+            {
+				editText = layout.FindViewById<EditText>(context.Resources.GetIdentifier("dialog_ValueField", "id", context.PackageName));
+            }
+            else
+            {
+				editText = null;
+            }
+            return layout;
+		}
 		
         private static Dictionary<ElementLayout, string> _resourceMap;
 
@@ -297,6 +329,8 @@ namespace MonoDroid.Dialog
 				{ ElementLayout.dialog_linkword_three_horizontal_labels, "dialog_linkword_three_horizontal_labels"},
 				{ ElementLayout.dialog_linkword_button, "dialog_linkword_button"},
 				{ ElementLayout.dialog_linkword_root, "dialog_linkword_root"},
+				{ ElementLayout.dialog_linkword_horizontal_label_button, "dialog_linkword_horizontal_label_button"},
+				{ ElementLayout.dialog_linkword_textview_centered, "dialog_linkword_textview_centered"},
             };
         }
     }

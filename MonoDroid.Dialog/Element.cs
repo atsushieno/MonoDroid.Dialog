@@ -42,7 +42,7 @@ namespace MonoDroid.Dialog
         /// <summary>
         /// Override for click the click event
         /// </summary>
-        public Action Click { get; set; }
+        public Action Tapped { get; set; }
 
         /// <summary>
         /// Override for long click events, some elements use this for action
@@ -109,7 +109,7 @@ namespace MonoDroid.Dialog
 
         public virtual void Selected() 
 		{
-			Console.WriteLine("foo");
+			Console.WriteLine("Selected");
 		}
 				
         public virtual bool Matches(string text)

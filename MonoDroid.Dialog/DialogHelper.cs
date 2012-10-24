@@ -23,7 +23,11 @@ namespace MonoDroid.Dialog
 
             dialogView.Adapter = this.DialogAdapter = new DialogAdapter(context, this.Root);
             dialogView.ItemClick += new EventHandler<AdapterView.ItemClickEventArgs>(ListView_ItemClick);
-            dialogView.ItemLongClick += ListView_ItemLongClick;;
+            dialogView.ItemLongClick += ListView_ItemLongClick;
+			dialogView.Scroll += delegate(object sender, AbsListView.ScrollEventArgs e) {
+				Console.WriteLine( "Item Count "  + e.View.Count );
+			};
+
             dialogView.Tag = root;
         }
 

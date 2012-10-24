@@ -49,7 +49,7 @@ namespace MonoDroid.Dialog
 
         public override View GetView(Context context, View convertView, ViewGroup parent)
 		{
-            this.Click = delegate { SelectImage(); };
+			this.Tapped = delegate { SelectImage(); };
 
             Bitmap scaledBitmap = Bitmap.CreateScaledBitmap(_image, dimx, dimy, true);
 
