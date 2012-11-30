@@ -377,11 +377,11 @@ namespace MonoDroid.Dialog
             dialog.Create().Show();
         }
 
-        void IDialogInterfaceOnClickListener.OnClick(IDialogInterface dialog, DialogInterfaceButton which)
+        void IDialogInterfaceOnClickListener.OnClick(IDialogInterface dialog, int which)
         {
-            if ((int)which >= 0)
+            if (which >= 0)
             {
-                this.RadioSelected = (int)which;
+                this.RadioSelected = which;
                 string radioValue = GetSelectedValue();
                 _value.Text = radioValue;
             }
