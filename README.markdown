@@ -1,6 +1,8 @@
 MonoDroid.Dialog
 ================
 
+Forked from spouliot/MonoDroid.Dialog for use by Xamarin QA.
+
 NOTE: This project is an attempt to port the ideas and ease of use of the 
 MonoTouch.Dialog project to MonoDroid.  Given the significant differences 
 in the layout and UI architectures between iOS and Android some things will 
