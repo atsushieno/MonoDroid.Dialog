@@ -43,6 +43,7 @@ namespace MonoDroid.Dialog
 			dialog_linkword_root,
 			dialog_linkword_horizontal_label_button,
 			dialog_linkword_textview_centered,
+			dialog_linkword_previous_next_exit,
         }
 
         public static View LoadFloatElementLayout(Context context, View convertView, ViewGroup parent, int layoutId, out TextView label, out SeekBar slider, out ImageView left, out ImageView right)
@@ -210,6 +211,24 @@ namespace MonoDroid.Dialog
             return layout;
 		}
 
+		public static View LoadGlossaryNavigationLayout (Context context, View convertView, ViewGroup parent, int layoutId,out Button nextButton, out Button exitButton, out Button previousButton )
+		{
+			View layout = LoadLayout(context, parent, layoutId);
+			if (layout != null)
+			{
+				previousButton = layout.FindViewById<Button>(context.Resources.GetIdentifier("dialog_PreviousField", "id", context.PackageName));
+				nextButton = layout.FindViewById<Button>(context.Resources.GetIdentifier("dialog_LabelField", "id", context.PackageName));
+				exitButton = layout.FindViewById<Button>(context.Resources.GetIdentifier("dialog_ValueField", "id", context.PackageName));
+			}
+			else
+			{
+				previousButton = null;
+				nextButton = null;
+				exitButton = null;
+			}
+			return layout;
+		}
+
 		public static View LoadResultLayout (Context context, View convertView, ViewGroup parent, int layoutId, out TextView leftTextView, out TextView middleTextView, out TextView rightTextView)
 		{
 			View layout = LoadLayout(context, parent, layoutId);
@@ -331,6 +350,7 @@ namespace MonoDroid.Dialog
 				{ ElementLayout.dialog_linkword_root, "dialog_linkword_root"},
 				{ ElementLayout.dialog_linkword_horizontal_label_button, "dialog_linkword_horizontal_label_button"},
 				{ ElementLayout.dialog_linkword_textview_centered, "dialog_linkword_textview_centered"},
+				{ ElementLayout.dialog_linkword_previous_next_exit, "dialog_linkword_previous_next_exit"},
             };
         }
     }
