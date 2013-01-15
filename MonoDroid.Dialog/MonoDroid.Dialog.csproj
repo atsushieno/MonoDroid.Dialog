@@ -12,6 +12,7 @@
     <RootNamespace>MonoDroid.Dialog</RootNamespace>
     <AssemblyName>MonoDroid.Dialog</AssemblyName>
     <FileAlignment>512</FileAlignment>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -67,6 +68,7 @@
     <Compile Include="SectionAdapter.cs" />
     <Compile Include="StringElement.cs" />
     <Compile Include="ViewElement.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -76,4 +78,81 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\DialogSampleApp\Resources\drawable\dialog_disclosure.png">
+      <Link>Resources\drawable\dialog_disclosure.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\drawable\dialog_expander_ic_minimized.9.png">
+      <Link>Resources\drawable\dialog_expander_ic_minimized.9.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\drawable\icon.png">
+      <Link>Resources\drawable\icon.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_achievements.xml">
+      <Link>Resources\layout\dialog_achievements.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_boolfieldleft.xml">
+      <Link>Resources\layout\dialog_boolfieldleft.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_boolfieldright.xml">
+      <Link>Resources\layout\dialog_boolfieldright.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_boolfieldsubleft.xml">
+      <Link>Resources\layout\dialog_boolfieldsubleft.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_boolfieldsubright.xml">
+      <Link>Resources\layout\dialog_boolfieldsubright.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_button.xml">
+      <Link>Resources\layout\dialog_button.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_datefield.xml">
+      <Link>Resources\layout\dialog_datefield.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_fieldsetlabel.xml">
+      <Link>Resources\layout\dialog_fieldsetlabel.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_floatimage.xml">
+      <Link>Resources\layout\dialog_floatimage.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_labelfieldbelow.xml">
+      <Link>Resources\layout\dialog_labelfieldbelow.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_labelfieldright.xml">
+      <Link>Resources\layout\dialog_labelfieldright.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_onofffieldright.xml">
+      <Link>Resources\layout\dialog_onofffieldright.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_panel.xml">
+      <Link>Resources\layout\dialog_panel.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_root.xml">
+      <Link>Resources\layout\dialog_root.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_selectlist.xml">
+      <Link>Resources\layout\dialog_selectlist.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_selectlistfield.xml">
+      <Link>Resources\layout\dialog_selectlistfield.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_textarea.xml">
+      <Link>Resources\layout\dialog_textarea.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_textfieldbelow.xml">
+      <Link>Resources\layout\dialog_textfieldbelow.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_textfieldright.xml">
+      <Link>Resources\layout\dialog_textfieldright.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\layout\main.xml">
+      <Link>Resources\layout\main.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\DialogSampleApp\Resources\values\strings.xml">
+      <Link>Resources\values\strings.xml</Link>
+    </AndroidResource>
+  </ItemGroup>
 </Project>
