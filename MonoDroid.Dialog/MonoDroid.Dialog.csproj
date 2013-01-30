@@ -148,9 +148,6 @@
     <AndroidResource Include="..\DialogSampleApp\Resources\layout\dialog_textfieldright.xml">
       <Link>Resources\layout\dialog_textfieldright.xml</Link>
     </AndroidResource>
-    <AndroidResource Include="..\DialogSampleApp\Resources\layout\main.xml">
-      <Link>Resources\layout\main.xml</Link>
-    </AndroidResource>
     <AndroidResource Include="..\DialogSampleApp\Resources\values\strings.xml">
       <Link>Resources\values\strings.xml</Link>
     </AndroidResource>

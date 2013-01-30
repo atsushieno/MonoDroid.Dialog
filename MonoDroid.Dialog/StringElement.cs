@@ -66,10 +66,11 @@ namespace MonoDroid.Dialog
             View view = DroidResources.LoadStringElementLayout(context, convertView, parent, LayoutId, out _caption, out _text);
             if (view != null)
             {
+                var fontSize = FontSize > 0 ? FontSize : 21; // taken from dialog_textarea.xml
                 _caption.Text = Caption;
-				_caption.TextSize = FontSize;
+                _caption.TextSize = fontSize;
                 _text.Text = Value;
-				_text.TextSize = FontSize;
+                _text.TextSize = fontSize;
 				if (Click != null)
 					view.Click += Click;
             }
