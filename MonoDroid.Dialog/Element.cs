@@ -30,10 +30,6 @@ namespace MonoDroid.Dialog
 
         public int LayoutId { get; private set; }
 
-        /// <summary>
-        ///  Handle to the container object.
-        /// </summary>
-        /// <remarks>
         /// For sections this points to a RootElement, for every other object this points to a Section and it is null
         /// for the root RootElement.
         /// </remarks>
@@ -42,24 +38,24 @@ namespace MonoDroid.Dialog
         /// <summary>
         /// Override for click the click event
         /// </summary>
-        public EventHandler Click { get; set; }
+        public Action Click { get; set; }
 
         /// <summary>
         /// Override for long click events, some elements use this for action
         /// </summary>
-        public EventHandler LongClick { get; set; }
+        public Action LongClick { get; set; }
 
         /// <summary>
         /// An Object that contains data about the element. The default is null.
         /// </summary>
         public Object Tag { get; set; }
-         
+	
         public void Dispose()
         {
             Dispose(true);
         }
 
-        protected virtual void Dispose(bool disposing) { }
+    	protected virtual void Dispose(bool disposing) { }
 
         /// <summary>
         /// Returns a summary of the value represented by this object, suitable 
@@ -82,10 +78,11 @@ namespace MonoDroid.Dialog
         /// <returns></returns>
         public virtual View GetView(Context context, View convertView, ViewGroup parent)
         {
-            return LayoutId == 0 ? new View(context) : null;
+			var view = LayoutId == 0 ? new View(context) : null;
+            return view;
         }
 
-        public virtual void Selected() { }
+        public virtual void Selected() {}
 				
         public virtual bool Matches(string text)
         {

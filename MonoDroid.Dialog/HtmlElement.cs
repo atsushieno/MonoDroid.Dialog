@@ -1,4 +1,4 @@
-﻿using Android.App;
+using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Views;
@@ -37,9 +37,7 @@ namespace MonoDroid.Dialog
         public override View GetView(Context context, View convertView, ViewGroup parent)
 		{
 			View view = base.GetView (context, convertView, parent);
-			
-            this.Click = (o, e) => OpenUrl(context);
-
+			this.Click = delegate { OpenUrl(context); };
 			return view;
 		}
     }

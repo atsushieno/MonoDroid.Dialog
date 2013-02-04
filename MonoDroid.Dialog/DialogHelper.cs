@@ -22,23 +22,35 @@ namespace MonoDroid.Dialog
             this.Root.Context = context;
 
             dialogView.Adapter = this.DialogAdapter = new DialogAdapter(context, this.Root);
-            dialogView.ItemClick += new EventHandler<AdapterView.ItemClickEventArgs>(ListView_ItemClick);
-            //dialogView.ItemLongClick += new EventHandler<ItemEventArgs>(ListView_ItemLongClick);
+            dialogView.ItemClick += ListView_ItemClick;
+            // FIXME: should I comment out this? some branch seems to have done it.
+            dialogView.ItemLongClick += ListView_ItemLongClick;;
             dialogView.Tag = root;
         }
 
-        void ListView_ItemLongClick(object sender, AdapterView.ItemClickEventArgs e)
+        void ListView_ItemLongClick (object sender, AdapterView.ItemLongClickEventArgs e)
         {
-            var elem = this.DialogAdapter.ElementAtIndex(e.Position);
-            if (elem != null && elem.LongClick != null)
-                elem.LongClick(sender, e);
+			var elem = this.DialogAdapter.ElementAtIndex(e.Position);
+            if (elem != null && elem.LongClick != null) {
+				elem.LongClick();
+			}
         }
 
         void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var elem = this.DialogAdapter.ElementAtIndex(e.Position);
-            if (elem != null && elem.Click != null)
-                elem.Click(sender, e);
+			if(elem != null)
+				elem.Selected();
         }
+		
+		public void ReloadData()
+		{
+			if(Root == null) {
+				return;
+			}
+			
+			this.DialogAdapter.ReloadData();
+		}
+		
     }
 }
