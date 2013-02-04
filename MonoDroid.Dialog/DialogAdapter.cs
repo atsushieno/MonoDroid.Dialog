@@ -1,6 +1,7 @@
 using Android.Content;
 using Android.Views;
 using Android.Widget;
+using System;
 
 namespace MonoDroid.Dialog
 {
@@ -22,7 +23,7 @@ namespace MonoDroid.Dialog
 		public override bool IsEnabled (int position)
 		{
 			// start counting from here
-			int typeOffset = TYPE_SECTION_HEADER + 1;
+			int typeOffset = TYPE_SECTION_HEADER;
 
 			foreach (var s in Root.Sections) {
 				if (position == 0)
@@ -89,23 +90,31 @@ namespace MonoDroid.Dialog
 
 		public override int GetItemViewType (int position)
 		{
-			// start counting from here
-			int typeOffset = TYPE_SECTION_HEADER + 1;
+			try {
 
-			foreach (var s in Root.Sections) {
-				if (position == 0)
-					return (TYPE_SECTION_HEADER);
+				// start counting from here
+				int typeOffset = TYPE_SECTION_HEADER;
 
-				int size = s.Adapter.Count + 1;
+				foreach (var s in Root.Sections)
+				{
+					if (position == 0)
+						return (TYPE_SECTION_HEADER);
 
-				if (position < size)
-					return (typeOffset + s.Adapter.GetItemViewType (position - 1));
+					int size = s.Adapter.Count + 1;
 
-				position -= size;
-				typeOffset += s.Adapter.ViewTypeCount;
+					if (position < size)
+						return (typeOffset + s.Adapter.GetItemViewType(position - 1));
+
+					position -= size;
+					typeOffset += s.Adapter.ViewTypeCount;
+				}
+
+				return -1;
+			} 
+			catch (System.Exception ex) {
+				Console.WriteLine ( "Breaking : " + ex.Message );
+				return -1;
 			}
-
-			return -1;
 		}
 
 		public override long GetItemId (int position)
@@ -115,25 +124,32 @@ namespace MonoDroid.Dialog
 
 		public override View GetView (int position, View convertView, ViewGroup parent)
 		{
-			int sectionIndex = 0;
+			try {
+	                        int sectionIndex = 0;
 
-			foreach (var s in Root.Sections) {
-				if (s.Adapter.Context == null)
-					s.Adapter.Context = this.context;
+				foreach (var s in Root.Sections)
+				{
+					if (s.Adapter.Context == null)
+						s.Adapter.Context = this.context;
 
-				if (position == 0)
-					return s.GetView (context, convertView, parent);
+					if (position == 0)
+						return s.GetView(context, convertView, parent);
 
-				int size = s.Adapter.Count + 1;
+					int size = s.Adapter.Count + 1;
 
-				if (position < size)
-					return (s.Adapter.GetView (position - 1, convertView, parent));
+					if (position < size)
+						return (s.Adapter.GetView(position - 1, convertView, parent));
 
-				position -= size;
-				sectionIndex++;
+					position -= size;
+					sectionIndex++;
+				}
+
+				return null;
 			}
-
-			return null;
+			catch (System.Exception ex) {
+				Console.WriteLine ( "Breaking : " + ex.Message );
+				return null;
+			}
 		}
 		
 		public void ReloadData ()

@@ -17,11 +17,14 @@ namespace MonoDroid.Dialog
         public string Value
         {
             get { return _value; }
-            set { _value = value; if (_text != null) _text.Text = _value; }
+            set { _value = value; if (_text != null) { _text.Text = _value; } }
         }
         private string _value;
 
         public object Alignment;
+		
+		public int Lines { get; set; }
+		public bool Multiline { get; set; }
 
         public StringElement(string caption)
             : base(caption, (int)DroidResources.ElementLayout.dialog_labelfieldright)
@@ -44,7 +47,7 @@ namespace MonoDroid.Dialog
             : base(caption, (int)DroidResources.ElementLayout.dialog_labelfieldright)
         {
             Value = value;
-			this.Click = clicked;
+			this.Tapped = clicked;
         }
 
         public StringElement(string caption, string value, int layoutId)
@@ -57,7 +60,7 @@ namespace MonoDroid.Dialog
             : base(caption, (int)DroidResources.ElementLayout.dialog_labelfieldright)
         {
             Value = null;
-			this.Click = clicked;
+			this.Tapped = clicked;
         }
 
         public override View GetView(Context context, View convertView, ViewGroup parent)
@@ -67,11 +70,18 @@ namespace MonoDroid.Dialog
             {
                 var fontSize = FontSize > 0 ? FontSize : 21; // taken from dialog_textarea.xml
                 _caption.Text = Caption;
-                _caption.TextSize = fontSize;
+				if (FontSize != 0)
+				  _caption.TextSize = FontSize;
+				
+				_text.SetSingleLine(!Multiline);
+				if (Multiline)
+					_text.SetLines(Lines);
                 _text.Text = Value;
-                _text.TextSize = fontSize;
-				if (Click != null)
-					view.Click += delegate { this.Click(); };
+				if (FontSize != 0)
+				  _text.TextSize = FontSize;
+				
+				if (Tapped != null)
+					view.Click += delegate { this.Tapped(); };
             }
             return view;
         }
@@ -80,8 +90,8 @@ namespace MonoDroid.Dialog
 		{
 			base.Selected ();
 			
-			if(this.Click != null) {
-				Click();
+			if(this.Tapped != null) {
+				Tapped();
 			}
 		}
 
