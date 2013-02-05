@@ -120,11 +120,6 @@ namespace MonoDroid.Dialog
 			set { footer = value; }
 		}
 
-		/// <summary>
-		/// The section's font size.
-		/// </summary>
-		public int FontSize {get;set;}
-		
 		public int Count
 		{
 			get { return Elements.Count; }
@@ -324,8 +319,8 @@ namespace MonoDroid.Dialog
 				e.Dispose();
 			Elements = new List<Element>();
 
-			// var root = Parent as RootElement;
-			// if (root != null && root.TableView != null)
+			var root = Parent as RootElement;
+			//if (root != null && root.TableView != null)
 			//    root.TableView.ReloadData();
 		}
 
@@ -341,21 +336,15 @@ namespace MonoDroid.Dialog
 
 		public int GetElementViewType(Element e)
 		{
-			try {
-				var elementType = e.GetType().FullName;
+			var elementType = e.GetType().FullName;
 
-				for (int i = 0; i < ElementTypes.Count; i++)
-				{
-					if (ElementTypes[i].Equals(elementType))
-						return i + 1;
-				}
-
-				return 0;
-			} 
-			catch (System.Exception ex) {
-				Console.WriteLine ( "Breaking : " + ex.Message );
-				return 0;
+			for (int i = 0; i < ElementTypes.Count; i++)
+			{
+				if (ElementTypes[i].Equals(elementType))
+					return i + 1;
 			}
+
+			return 0;
 		}
 
 		public int ElementViewTypeCount
@@ -369,8 +358,6 @@ namespace MonoDroid.Dialog
 				?? new TextView(context, null, Android.Resource.Attribute.ListSeparatorTextViewStyle);
 
 			view.Text = this.Caption;
-			if (FontSize != 0)
-			  view.TextSize = FontSize;
 
 			return view;
 		}

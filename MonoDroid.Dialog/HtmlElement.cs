@@ -37,8 +37,7 @@ namespace MonoDroid.Dialog
         public override View GetView(Context context, View convertView, ViewGroup parent)
 		{
 			View view = base.GetView (context, convertView, parent);
-			// some branch uses Tap
-			this.Tapped = delegate { OpenUrl(context); };
+			this.Click = delegate { OpenUrl(context); };
 			return view;
 		}
     }

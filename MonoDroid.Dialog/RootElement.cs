@@ -27,13 +27,8 @@ namespace MonoDroid.Dialog
         public RootElement(string caption)
             : base(caption, (int) DroidResources.ElementLayout.dialog_root)
         {
-            InitSection ();
-        }
-
-		public RootElement(string caption, DroidResources.ElementLayout layoutid)
-            : base(caption, (int) layoutid)
-        {
-            InitSection();
+            _summarySection = -1;
+            Sections = new List<Section>();
         }
 
         /// <summary>
@@ -47,8 +42,9 @@ namespace MonoDroid.Dialog
         public RootElement(string caption, Func<RootElement, View> createOnSelected)
             : base(caption, (int)DroidResources.ElementLayout.dialog_root)
         {
-			InitSection();
+            _summarySection = -1;
             this._createOnSelected = createOnSelected;
+            Sections = new List<Section>();
         }
 
         /// <summary>
@@ -85,13 +81,6 @@ namespace MonoDroid.Dialog
         {
             this._group = group;
         }
-
-
-		void InitSection ()
-		{
-			_summarySection = -1;
-			Sections = new List<Section> ();
-		}
 
         /// <summary>
         /// Single save point for a context, elements can get this context via GetContext() for navigation operations
@@ -330,7 +319,7 @@ namespace MonoDroid.Dialog
                     _caption.Text = Caption;
                     _value.Text = radioValue;
 //                    this.Click = (o, e) => { SelectRadio(); };
-					this.Tapped += delegate { SelectRadio(); };
+					this.Click += delegate { SelectRadio(); };
                 }
             }
             else if (_group != null)

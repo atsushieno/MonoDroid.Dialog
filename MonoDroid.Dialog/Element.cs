@@ -38,7 +38,7 @@ namespace MonoDroid.Dialog
         /// <summary>
         /// Override for click the click event
         /// </summary>
-        public Action Tapped { get; set; }
+        public Action Click { get; set; }
 
         /// <summary>
         /// Override for long click events, some elements use this for action
@@ -53,10 +53,6 @@ namespace MonoDroid.Dialog
         public void Dispose()
         {
             Dispose(true);
-			
-			// Use SupressFinalize in case a subclass
-	        // of this type implements a finalizer.
-	        GC.SuppressFinalize(this);
         }
 
     	protected virtual void Dispose(bool disposing) { }

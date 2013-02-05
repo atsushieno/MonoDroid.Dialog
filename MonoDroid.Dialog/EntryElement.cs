@@ -43,7 +43,6 @@ namespace MonoDroid.Dialog
         {
             _val = @value;
             Lines = 1;
-			Enabled = true;
         }
         
         public override string Summary()
@@ -55,8 +54,6 @@ namespace MonoDroid.Dialog
         public bool Numeric { get; set; }
         public string Hint { get; set; }
         public int Lines { get; set; }
-		public bool Enabled { get; set; }
-		public int Width { get; set; }
 
         protected EditText _entry;
         private string _val;
@@ -81,7 +78,6 @@ namespace MonoDroid.Dialog
 
                 _entry.Text = this.Value;
                 _entry.Hint = this.Hint;
-				_entry.LayoutParameters.Width = this.Width;
 
                 if (this.Password)
                     _entry.InputType = (InputTypes.ClassText | InputTypes.TextVariationPassword);
@@ -89,8 +85,6 @@ namespace MonoDroid.Dialog
                     _entry.InputType = (InputTypes.ClassNumber | InputTypes.NumberFlagDecimal | InputTypes.NumberFlagSigned);
                 else
                     _entry.InputType = InputTypes.ClassText;
-				
-				_entry.Enabled = this.Enabled;
 
                 // continuation of crazy ass hack, stash away the listener value so we can look it up later
                 _entry.Tag = this;
